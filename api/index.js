@@ -3,7 +3,6 @@ let app = express();
 import http from 'http';
 let server = http.createServer(app);
 
-
 import mongoose from 'mongoose';
 
 
@@ -23,7 +22,7 @@ export const autoIncrement = import('mongoose-auto-increment');
 
 // mongoose connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/projet-test-unit', {
+mongoose.connect('mongodb://localhost/projetTestUnit', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, error => {

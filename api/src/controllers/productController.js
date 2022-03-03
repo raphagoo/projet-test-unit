@@ -1,24 +1,27 @@
 import mongoose from 'mongoose';
 import { verifyJwt } from '../services/jwtVerification.js';
-import * as https from "https";
+import {ProductSchema} from "../models/productModel.js";
+const Product = mongoose.model('Product', ProductSchema);
 
 export const listProducts = (req, res) => {
-    https.get('https://rickandmortyapi.com/api/character', (resp) => {
-        let data = '';
+    let perPage = 10
+        , page = Math.max(0, req.query.page)
 
-        // A chunk of data has been received.
-        resp.on('data', (chunk) => {
-            data += chunk;
-        });
-
-        // The whole response has been received. Print out the result.
-        resp.on('end', () => {
-            res.status(200).send(data)
-        });
-
-    }).on("error", (err) => {
-        console.log("Error: " + err.message);
-    });
+    Product.find()
+        .limit(perPage)
+        .skip(perPage * page)
+        .sort({
+            id: 'asc'
+        })
+        .exec(function(err, products) {
+            Product.countDocuments().exec(function(err, count) {
+                res.status(200).send({
+                    products: products,
+                    page: page,
+                    pages: count / perPage
+                })
+            })
+        })
 };
 
 export const getProduct = (req, res) => {
