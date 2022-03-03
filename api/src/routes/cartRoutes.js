@@ -1,4 +1,4 @@
-import { listCarts, getCart, createCart, updateCart, delete } from "../controllers/cartController.js";
+import { listCarts, getCart, createCart, updateCart, deleteCart } from "../controllers/cartController.js";
 
 export const cartRoutes = (app) => {
     app.route('/cart')
