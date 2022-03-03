@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { CartSchema } from "../models/cartModel";
+import { CartSchema } from "../models/cartModel.js";
 const Cart = mongoose.model('Cart', CartSchema);
 
 export const createCart = (req, res) => {
@@ -59,7 +59,7 @@ export const updateCart = (req, res) => {
 };
 
 export const deleteCart = (req, res) => {
-    Cart.findOneAndDelete({"_id": req.params.id}, (err, cart) => {
+    Cart.findOneAndDelete({"id": req.params.id}, (err, cart) => {
         if(err) {
             res.status(400).send(err);
         } else {

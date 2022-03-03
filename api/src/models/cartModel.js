@@ -1,6 +1,6 @@
-
 import mongoose from "mongoose";
 let Schema = mongoose.Schema;
+import autopopulate from 'mongoose-autopopulate'
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 export const CartSchema = new Schema({
@@ -11,4 +11,4 @@ export const CartSchema = new Schema({
     }
 });
 
-CartSchema.plugin(require('mongoose-autopopulate'));
+CartSchema.plugin(autopopulate);
