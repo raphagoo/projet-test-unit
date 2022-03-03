@@ -7,6 +7,7 @@ import mongoose from 'mongoose';
 
 
 import { productRoutes } from "./src/routes/productRoutes.js";
+import { cartRoutes } from "./src/routes/cartRoutes.js";
 
 
 app.use(express.urlencoded({extended: true}));
@@ -34,6 +35,7 @@ mongoose.connect('mongodb://localhost/projetTestUnit', {
 
 // Routes initialisation
 productRoutes(app);
+cartRoutes(app);
 
 
 server.listen(process.env.PORT || 9000,

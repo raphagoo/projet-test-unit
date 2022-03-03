@@ -34,20 +34,13 @@ export const getProduct = (req, res) => {
 
 
 export const createProduct = (req, res) => {
-    stripe.products.create({
-        name: req.body.name,
-        description: req.body.description,
-        images: req.body.images.split(','),
-        active: req.body.active
-    }).then(product => {
-        stripe.prices.create({
-            unit_amount: req.body.price.data[0].unit_amount,
-            currency: 'eur',
-            product: product.id
-        }).then(price => {
-            product.price = price
+    let newProduct = new Product(req.body);
+    newProduct.save((err, product) => {
+        if(err) {
+            res.status(400).send(err);
+        } else {
             res.status(201).json(product)
-        })
+        }
     })
 }
 export const updateProduct = (req, res) => {

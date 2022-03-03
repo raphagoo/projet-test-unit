@@ -32,20 +32,20 @@ describe('Products', () => {
             chai.request(server)
                 .delete('/product/' + getRandomArbitrary(1, 820))
                 .end((err, res) => {
-                    res.should.have.status(200);
-                    res.body.should.have.property('products')
+                    res.should.have.status(204);
                     done();
                 });
         });
     });
 
     describe('/POST products', () => {
-        it('it should GET all the products', (done) => {
+        it('it should POST a product', (done) => {
             chai.request(server)
-                .get('/product/list')
+                .post('/product')
+                .send({id: 999, name: 'mon test'})
                 .end((err, res) => {
-                    res.should.have.status(200);
-                    res.body.should.have.property('products')
+                    res.should.have.status(201);
+                    res.body.should.have.property('_id')
                     done();
                 });
         });
