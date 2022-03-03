@@ -76,10 +76,17 @@ export const updateProduct = (req, res) => {
     })
 };
 
-export const changeVisibilityProduct = (req, res) => {
-    stripe.products.update(req.params.id, {
-        active: req.body.active
-    }).then(product => {
-        res.status(200).json(product)
-    })
-}
+export const deleteCart = (req, res) => {
+    Cart.findOneAndDelete({"_id": req.params.id}, (err, cart) => {
+        if(err) {
+            res.status(400).send(err);
+        } else {
+            if(cart == null) {
+                res.sendStatus(404);
+            }
+            else {
+                res.sendStatus(204);
+            }
+        }
+    });
+};

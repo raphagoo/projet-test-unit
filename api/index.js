@@ -14,7 +14,7 @@ app.use(express.json());
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-Width, Content-Type, Accept, Authorization");
-    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
     next();
 });
 
@@ -39,4 +39,6 @@ productRoutes(app);
 server.listen(process.env.PORT || 9000,
     console.log(`listening`)
 );
+
+export default server
 
