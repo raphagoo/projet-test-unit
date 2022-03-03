@@ -37,7 +37,6 @@ describe('Cart', () => {
                         .post('/cart')
                         .send({products: [res.body._id]})
                         .end((err, res) => {
-                            console.log('test', res.body)
                             cartId = res.body._id
                             res.should.have.status(201);
                             done();
@@ -48,6 +47,9 @@ describe('Cart', () => {
 
     describe('/DELETE cart', () => {
         it('it should DELETE a cart', (done) => {
+            chai.request(server)
+                .delete('/product/' + 999)
+                .end()
             chai.request(server)
                 .delete('/cart/' + cartId)
                 .end((err, res) => {

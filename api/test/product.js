@@ -1,6 +1,3 @@
-import mongoose from "mongoose";
-import {ProductSchema} from "../src/models/productModel.js";
-const Product = mongoose.model('Product', ProductSchema);
 //Require the dev-dependencies
 import chai from 'chai'
 import chaiHttp from "chai-http";

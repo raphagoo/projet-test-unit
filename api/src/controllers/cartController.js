@@ -6,7 +6,6 @@ export const createCart = (req, res) => {
     let newCart = new Cart(req.body);
     newCart.save((err, cart) => {
         if(err) {
-            console.log(err)
             res.status(400).send(err);
         } else {
             res.status(201).json(cart)
