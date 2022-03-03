@@ -6,9 +6,10 @@ export const createCart = (req, res) => {
     let newCart = new Cart(req.body);
     newCart.save((err, cart) => {
         if(err) {
+            console.log(err)
             res.status(400).send(err);
         } else {
-            res.status(200).json(cart)
+            res.status(201).json(cart)
         }
     })
 };
@@ -59,7 +60,7 @@ export const updateCart = (req, res) => {
 };
 
 export const deleteCart = (req, res) => {
-    Cart.findOneAndDelete({"id": req.params.id}, (err, cart) => {
+    Cart.findOneAndDelete({"_id": req.params.id}, (err, cart) => {
         if(err) {
             res.status(400).send(err);
         } else {

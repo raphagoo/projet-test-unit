@@ -4,11 +4,11 @@ import autopopulate from 'mongoose-autopopulate'
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 export const CartSchema = new Schema({
-    products: {
+    products: [{
         type: ObjectId,
-        ref: 'Race',
+        ref: 'Product',
         autopopulate: true
-    }
+    }]
 });
 
 CartSchema.plugin(autopopulate);

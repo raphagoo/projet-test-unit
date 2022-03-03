@@ -44,33 +44,28 @@ export const createProduct = (req, res) => {
     })
 }
 export const updateProduct = (req, res) => {
-    stripe.products.update(req.params.id, {
-        name: req.body.name,
-        description: req.body.description,
-        images: req.body.images.split(','),
-        active: req.body.active
-    }).then(product => {
-        stripe.prices.update(req.body.price.data[0].id, {
-            active: false
-        }).then(() => {
-            stripe.prices.create({
-                unit_amount: req.body.price.data[0].unit_amount,
-                currency: 'eur',
-                product: req.params.id
-            }).then(price => {
-                product.price = price
-                res.status(200).json(product)
-            }).catch(error => {
-                res.status(500).json(error)
-            })
-        })
-    }).catch(error => {
-        res.status(500).json(error)
-    })
+    if(req.params){
+        Product.findOneAndUpdate({"id": req.params.id}, req.body, {new: true, useFindAndModify: false})
+            .exec((err, product) => {
+                if(err) {
+                    res.status(400).send(err);
+                } else {
+                    if(product == null) {
+                        res.sendStatus(404);
+                    }
+                    else {
+                        res.status(200).json(product);
+                    }
+                }
+            });
+    }
+    else{
+        res.sendStatus(403)
+    }
 };
 
 export const deleteProduct = (req, res) => {
-    Product.findOneAndDelete({"_id": req.params.id}, (err, cart) => {
+    Product.findOneAndDelete({"id": req.params.id}, (err, cart) => {
         if(err) {
             res.status(400).send(err);
         } else {
