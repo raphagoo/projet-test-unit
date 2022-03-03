@@ -13,7 +13,7 @@ export const listProducts = (req, res) => {
 
         // The whole response has been received. Print out the result.
         resp.on('end', () => {
-            res.status(200).json(data)
+            res.status(200).send(data)
         });
 
     }).on("error", (err) => {
