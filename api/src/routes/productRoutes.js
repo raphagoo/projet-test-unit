@@ -1,4 +1,4 @@
-import { listProducts, getProduct, createProduct, updateProduct, changeVisibilityProduct } from "../controllers/productController.js";
+import { listProducts, getProduct, createProduct, updateProduct, deleteProduct } from "../controllers/productController.js";
 
 export const productRoutes = (app) => {
     app.route('/product/list')
@@ -13,6 +13,6 @@ export const productRoutes = (app) => {
     app.route('/product/:id')
         .put(updateProduct);
 
-    app.route('/product/hide/:id')
-        .put(changeVisibilityProduct);
+    app.route('/product/:id')
+        .delete(deleteProduct);
 }

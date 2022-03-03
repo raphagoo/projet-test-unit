@@ -76,8 +76,8 @@ export const updateProduct = (req, res) => {
     })
 };
 
-export const deleteCart = (req, res) => {
-    Cart.findOneAndDelete({"_id": req.params.id}, (err, cart) => {
+export const deleteProduct = (req, res) => {
+    Product.findOneAndDelete({"_id": req.params.id}, (err, cart) => {
         if(err) {
             res.status(400).send(err);
         } else {
