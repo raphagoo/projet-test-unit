@@ -37,6 +37,7 @@ module.exports = {
     output: {
         publicPath: isDev ? `/` : baseHref,
     },
+    
     module: {
         rules: [
             {

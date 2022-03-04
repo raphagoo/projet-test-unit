@@ -3,7 +3,7 @@
      <v-app-bar>
          <router-link to="/">
             <v-btn icon>
-                <v-icon>home</v-icon>
+                <v-icon class="home">home</v-icon>
             </v-btn>
          </router-link>
 
@@ -11,24 +11,16 @@
 
          <v-spacer></v-spacer>
 
-         <router-link v-if="account" to="/user">
-             <v-btn icon>
-                 <v-icon>person</v-icon>
-             </v-btn>
-         </router-link>
+         
 
          <router-link to="/basket">
              <v-btn icon>
-                <v-icon>shopping_cart</v-icon>
+                <v-icon class="basket">shopping_cart</v-icon>
              </v-btn>
          </router-link>
-         <v-btn v-if="account" @click="logOut" icon>
-             <v-icon>logout</v-icon>
-         </v-btn>
+         
          <router-link to="/login">
-            <v-btn v-if="!account" icon>
-                <v-icon>login</v-icon>
-            </v-btn>
+           
          </router-link>
      </v-app-bar>
     <router-view/>
@@ -40,13 +32,12 @@ import {mapActions, mapState} from "vuex";
 export default {
     computed: {
         ...mapState({
-            account: state => state.account.user
         })
     },
     methods: {
         ...mapActions('account', ['logout']),
         logOut(){
-            this.logout()
+            
         }
     }
 }

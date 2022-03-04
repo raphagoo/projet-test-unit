@@ -1,8 +1,17 @@
-const state = {products: [], totalPrice: 0};
-
+const state = {products: [], productsId: []};
+import api from '../interfaces/apiInterface';
 const actions = {
+    
     addToBasket({commit}, product){
         commit('addToBasketSuccess', product)
+       // console.log(product)
+    },
+    
+    addBasketBDD({commit}, arrayBasket){
+        api.post('/cart', {products : arrayBasket}).then(products => {
+            
+            commit('addBasketSucces', products)
+        })
     },
     removeOne({commit}, product) {
         commit('removeOneProductSuccess', product)
@@ -14,33 +23,44 @@ const actions = {
 
 const mutations = {
     addToBasketSuccess(state, product){
-        state.totalPrice = state.totalPrice + (product.price.data[0].unit_amount * 1.0 / 100)
         product.quantity = 1
-        let exists = state.products.find(item => item.id === product.id)
+        let exists = state.products.find(item => item._id === product._id)
         if(typeof exists === "undefined"){
             state.products.push(product)
+            state.productsId.push(product._id)
         } else {
             state.products.forEach(item => {
-                if(item.id === product.id){
+                if(item._id === product._id){
                     item.quantity++
                 }
             })
-        }
+        }console.log(state.productsId)
     },
+
+    addBasketSucces(){
+
+    }
+    ,
     removeOneProductSuccess(state, product){
-        state.totalPrice = state.totalPrice - (product.price.data[0].unit_amount * 1.0 / 100)
         state.products.forEach(item => {
-            if(product.id === item.id){
+            if(product._id === item._id){
                 product.quantity--
             }
         })
     },
+
     removeFromCartSuccess(state, product){
-        state.totalPrice = state.totalPrice - (product.price.data[0].unit_amount * 1.0 / 100 * product.quantity)
+        console.log(product._id)
         state.products = state.products.filter(function( obj ) {
-            return obj.id !== product.id;
+          //  console.log(state.products)
+            return obj._id !== product._id;
         });
-    }
+        
+        state.productsId = state.productsId.filter(productId => productId !== product._id);
+
+        
+    },
+    
 };
 
 export const basket = {
