@@ -1,7 +1,8 @@
 //Require the dev-dependencies
-import chai from 'chai'
+import chai, {expect} from 'chai'
 import chaiHttp from "chai-http";
 import server from '../index.js'
+import {strict as assert} from "assert";
 let should = chai.should();
 
 
@@ -39,6 +40,35 @@ describe('Cart', () => {
                         .end((err, res) => {
                             cartId = res.body._id
                             res.should.have.status(201);
+                            done();
+                        })
+                });
+        });
+    });
+
+    describe('/GET cart', () => {
+        it('it should GET a cart by id', (done) => {
+            chai.request(server)
+                .get('/cart/' + cartId)
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    done();
+                });
+        });
+    });
+
+    describe('/UPDATE cart', () => {
+        it('it should UPDATE a cart', (done) => {
+            chai.request(server)
+                .post('/product')
+                .send({id: 998, name: 'mon test modifié'})
+                .end((err, res) => {
+                    chai.request(server)
+                        .put('/cart/' + cartId)
+                        .send({products: [res.body._id]})
+                        .end((err, res) => {
+                            res.should.have.status(200);
+                            expect(res.body.products === [res.body._id]);
                             done();
                         })
                 });

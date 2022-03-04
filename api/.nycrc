@@ -1,0 +1,9 @@
+{
+  "all": true,
+  "include": [
+    "src/controllers/**.js",
+    "src/routes/**.js",
+    "src/models/**.js"
+  ],
+  "exclude": []
+}

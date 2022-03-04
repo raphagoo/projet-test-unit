@@ -3,14 +3,6 @@ import chai from 'chai'
 import chaiHttp from "chai-http";
 import server from '../index.js'
 let should = chai.should();
-
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
-}
-
-
 chai.use(chaiHttp);
 //Our parent block
 describe('Products', () => {
@@ -40,6 +32,17 @@ describe('Products', () => {
                 .end((err, res) => {
                     res.should.have.status(201);
                     res.body.should.have.property('_id')
+                    done();
+                });
+        });
+    });
+
+    describe('/GET product', () => {
+        it('it should GET a product by id', (done) => {
+            chai.request(server)
+                .get('/product/' + 999)
+                .end((err, res) => {
+                    res.should.have.status(200);
                     done();
                 });
         });

@@ -29,7 +29,7 @@ export const getCart = (req, res) => {
         .exec((err, cart) => {
             if(err) {
                 res.status(400).send(err);
-            } else if(cart == null) {
+            } else if(cart === null) {
                 res.sendStatus(404)
             } else {
                 res.status(200).json(cart)
@@ -38,24 +38,19 @@ export const getCart = (req, res) => {
 };
 
 export const updateCart = (req, res) => {
-    if(req.params){
-        Cart.findOneAndUpdate({"_id": req.params.id}, req.body, {new: true, useFindAndModify: false})
-            .exec((err, cart) => {
-                if(err) {
-                    res.status(400).send(err);
-                } else {
-                    if(cart == null) {
-                        res.sendStatus(404);
-                    }
-                    else {
-                        res.status(200).json(cart);
-                    }
+    Cart.findOneAndUpdate({"_id": req.params.id}, req.body, {new: true, useFindAndModify: false})
+        .exec((err, cart) => {
+            if(err) {
+                res.status(400).send(err);
+            } else {
+                if(cart === null) {
+                    res.sendStatus(404);
                 }
-            });
-    }
-    else{
-        res.sendStatus(403)
-    }
+                else {
+                    res.status(200).json(cart);
+                }
+            }
+        });
 };
 
 export const deleteCart = (req, res) => {
@@ -63,7 +58,7 @@ export const deleteCart = (req, res) => {
         if(err) {
             res.status(400).send(err);
         } else {
-            if(cart == null) {
+            if(cart === null) {
                 res.sendStatus(404);
             }
             else {

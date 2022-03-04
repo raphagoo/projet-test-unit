@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
-import { verifyJwt } from '../services/jwtVerification.js';
 import {ProductSchema} from "../models/productModel.js";
 const Product = mongoose.model('Product', ProductSchema);
+import {expect} from "chai";
 
 export const listProducts = (req, res) => {
     let perPage = 10
@@ -25,7 +25,16 @@ export const listProducts = (req, res) => {
 };
 
 export const getProduct = (req, res) => {
-
+    Product.findOne({id: req.params.id})
+        .exec((err, cart) => {
+            if(err) {
+                res.status(400).send(err);
+            } else if(cart == null) {
+                res.sendStatus(404)
+            } else {
+                res.status(200).json(cart)
+            }
+        });
 };
 
 
