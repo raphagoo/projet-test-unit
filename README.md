@@ -48,8 +48,13 @@ yarn install
 npm start
 ```
 
-## Test (Cypress)
-### Front
+## Test
+### Back (Mocha)
+```sh
+npm test
+```
+
+### Front (Cypress)
 
 Les tests avec Cypress contient les tests fonctionnel des composants. A cause des problèmes rencontrés avec Vue.js
 
