@@ -1,7 +1,49 @@
-# Projet-archi
-
+# Projet-test-unit
 [![Node.js CI](https://github.com/raphagoo/projet-test-unit/actions/workflows/node.js.yml/badge.svg)](https://github.com/raphagoo/projet-test-unit/actions/workflows/node.js.yml) ![nycrc config on GitHub](https://img.shields.io/nycrc/raphagoo/projet-test-unit?config=api%2F.nycrc)
 
 
-Le dossier dump contient le dump de la database. Celui ci est optionnel car les users et tickets peuvent être créés depuis les projets.
-Si vous souhaitez importer le dump, il est nécéssaire de se référer au consignes dans le FR 8 de la documentation. Les mot de passe des users sont 1234.
+## Installation (Through Docker)
+
+```sh
+docker-compose build
+```
+
+```sh
+docker-compose up -d
+```
+
+FO will listen on 127.0.0.1:8080 and API on 127.0.0.1:9000
+
+## Installation (manually)
+
+### API
+
+```sh
+cd api
+```
+
+```sh
+npm i
+```
+
+```sh
+node ./fixtures/products_.js
+```
+
+```sh
+npm start
+```
+
+### FO
+
+```sh
+cd fo
+```
+
+```sh
+npm i
+```
+
+```sh
+npm start
+```

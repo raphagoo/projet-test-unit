@@ -81,6 +81,9 @@ describe('Cart', () => {
                 .delete('/product/' + 999)
                 .end()
             chai.request(server)
+                .delete('/product/' + 998)
+                .end()
+            chai.request(server)
                 .delete('/cart/' + cartId)
                 .end((err, res) => {
                     res.should.have.status(204);

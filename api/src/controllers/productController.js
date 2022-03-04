@@ -18,7 +18,7 @@ export const listProducts = (req, res) => {
                 res.status(200).send({
                     products: products,
                     page: page,
-                    pages: count / perPage
+                    pages: Math.floor(count / perPage)
                 })
             })
         })

@@ -1,15 +1,15 @@
 const state = {products: [], productsId: []};
 import api from '../interfaces/apiInterface';
 const actions = {
-    
+
     addToBasket({commit}, product){
         commit('addToBasketSuccess', product)
        // console.log(product)
     },
-    
+
     addBasketBDD({commit}, arrayBasket){
         api.post('/cart', {products : arrayBasket}).then(products => {
-            
+
             commit('addBasketSucces', products)
         })
     },
@@ -54,12 +54,12 @@ const mutations = {
           //  console.log(state.products)
             return obj._id !== product._id;
         });
-        
+
         state.productsId = state.productsId.filter(productId => productId !== product._id);
 
-        
+
     },
-    
+
 };
 
 export const basket = {
