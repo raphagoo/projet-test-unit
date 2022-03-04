@@ -41,9 +41,17 @@ cd fo
 ```
 
 ```sh
-npm i
+yarn install
 ```
 
 ```sh
 npm start
 ```
+
+## Test (Cypress)
+### Front
+
+```sh
+npm run cypress:open
+```
+
