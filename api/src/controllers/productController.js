@@ -25,11 +25,7 @@ export const listProducts = (req, res) => {
 };
 
 export const getProduct = (req, res) => {
-    stripe.products.retrieve(req.params.id).then(product => {
-        res.status(200).json(product)
-    }).catch(error => {
-        res.status(500).json(error)
-    })
+
 };
 
 

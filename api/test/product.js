@@ -16,7 +16,7 @@ chai.use(chaiHttp);
 describe('Products', () => {
 
     beforeEach( async () => {
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise(resolve => setTimeout(resolve, 500));
         console.log("----------------------");
     });
 

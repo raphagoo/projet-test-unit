@@ -23,7 +23,7 @@ export const autoIncrement = import('mongoose-auto-increment');
 
 // mongoose connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/projetTestUnit', {
+mongoose.connect('mongodb+srv://raphagoo:password1234@raphcluster.hjbxp.mongodb.net/projetTestUnit', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, error => {
