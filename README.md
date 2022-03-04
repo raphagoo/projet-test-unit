@@ -1,6 +1,6 @@
 # Projet-archi
 
-![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/raphagoo/Projet-archi)
+![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/raphagoo/Projet-archi) [![Node.js CI](https://github.com/raphagoo/projet-test-unit/actions/workflows/node.js.yml/badge.svg)](https://github.com/raphagoo/projet-test-unit/actions/workflows/node.js.yml)
 
 
 Le dossier dump contient le dump de la database. Celui ci est optionnel car les users et tickets peuvent être créés depuis les projets.
