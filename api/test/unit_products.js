@@ -40,9 +40,11 @@ describe('Product', () => {
     it('Removes a product using its id', (done) => {
         Product.findOneAndRemove({id: 999}, {useFindAndModify: false})
             .then(() => Product.findOne({ id: 999 }))
+            .catch((err) => console.log(err))
             .then((product) => {
                 assert(product === null);
                 done();
-            });
+            })
+            .catch((err) => console.log(err))
     })
 });
