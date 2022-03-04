@@ -6,7 +6,6 @@
   });
 });*/
 
-/* lllllllll
 it('loads the app', () => {
   //cy.get('testtt', { timeout: 10000 });
   cy.visit('http://localhost:8080/')
@@ -30,7 +29,7 @@ it('remove basket', () => {
   cy.get('.remove').click({ multiple: true })
   cy.get('.cart').should('have.length', 0)
   cy.get('.vide').contains('Votre panier est vide')
-})*/
+})
 
 
 

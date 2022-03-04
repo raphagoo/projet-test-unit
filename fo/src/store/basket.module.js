@@ -34,7 +34,7 @@ const mutations = {
                     item.quantity++
                 }
             })
-        }console.log(state.productsId)
+        }
     },
 
     addBasketSucces(){
@@ -50,7 +50,6 @@ const mutations = {
     },
 
     removeFromCartSuccess(state, product){
-        console.log(product._id)
         state.products = state.products.filter(function( obj ) {
           //  console.log(state.products)
             return obj._id !== product._id;

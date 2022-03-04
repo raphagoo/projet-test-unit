@@ -4,14 +4,11 @@ import api from '../interfaces/apiInterface';
 const actions = {
     listProducts({commit}){
         api.get('/product/list').then(products => {
-            console.log(products)
             commit('listProductsSuccess', products)
         })
     },
     nextProducts({commit}, num){
-        console.log("products")
         api.get('/product/list?page='+num).then(products => {
-            console.log(products)
             commit('listProductsSuccess', products)
         })
     },
