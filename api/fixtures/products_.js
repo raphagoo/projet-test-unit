@@ -3,10 +3,13 @@ import mongoose from "mongoose";
 import axios from "axios";
 import {ProductSchema} from "../src/models/productModel.js";
 const Product = mongoose.model('Product', ProductSchema);
+import {CartSchema} from "../src/models/cartModel.js";
+
+const Cart = mongoose.model('Cart', CartSchema);
 
 // mongoose connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/projetTestUnit', {
+mongoose.connect('mongodb+srv://raphagoo:password1234@raphcluster.hjbxp.mongodb.net/projetTestUnit', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, error => {
@@ -15,7 +18,7 @@ mongoose.connect('mongodb://localhost/projetTestUnit', {
         process.exit(1);
     }
 });
-
+Cart.deleteMany({}).exec()
 Product.deleteMany({}).exec().then(() => {
 
     let pages = []
