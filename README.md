@@ -51,7 +51,7 @@ npm start
 ## Test (Cypress)
 ### Front
 
-Les tets avec Cypress contient les tests fonctionnel des composants. A cause des problèmes rencontrés avec Vue.js
+Les tests avec Cypress contient les tests fonctionnel des composants. A cause des problèmes rencontrés avec Vue.js
 
 ```sh
 npm run cypress:open
