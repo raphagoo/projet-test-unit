@@ -16,7 +16,7 @@
     "license": "MIT",
     "main": "index.js",
     "scripts": {
-        "build": "rimraf dist && cross-env NODE_ENV=production webpack --progress",
+        "build": "rimraf dist && cross-env NODE_ENV=development webpack --progress",
         "test": "jest test/testUni.spec.js",
         "start": "cross-env NODE_ENV=development webpack serve --hot",
         "cypress:open": "cypress open",
